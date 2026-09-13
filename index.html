@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AI影视与后期作品集</title>
-  <meta name="description" content="天津师范大学戏剧影视文学专业学生的影视后期与AI视频制作作品集。" />
+  <meta name="description" content="聚焦影视后期、AI视觉制作与短视频剪辑的个人作品集。" />
   <meta name="theme-color" content="#080b0d" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23080b0d'/%3E%3Cpath d='M16 18h32v28H16z' fill='none' stroke='%23d7ff4f' stroke-width='4'/%3E%3Cpath d='m28 25 13 7-13 7z' fill='%23d7ff4f'/%3E%3C/svg%3E" />
   <style>
@@ -94,6 +94,17 @@
     .tags li { border: 1px solid var(--line); padding: .25rem .6rem; font-size: .76rem; color: #cbd1d1; }
     .case-link { width: fit-content; margin-top: 1.5rem; color: var(--acid); text-decoration: none; border-bottom: 1px solid currentColor; }
 
+    .shorts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 2.5rem; }
+    .short-card { position: relative; background: var(--panel); border: 1px solid var(--line); padding: .8rem; transition: transform .25s ease, border-color .25s ease; }
+    .short-card:hover { transform: translateY(-5px); border-color: rgba(215,255,79,.55); }
+    .short-frame { position: relative; aspect-ratio: 9/16; overflow: hidden; display: grid; place-items: center; background: linear-gradient(155deg,#1a2225,#0a0d0f 65%); border: 1px solid rgba(255,255,255,.09); }
+    .short-frame::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 70% 18%,rgba(108,213,209,.13),transparent 34%), repeating-linear-gradient(135deg,transparent,transparent 18px,rgba(255,255,255,.018) 18px,rgba(255,255,255,.018) 36px); }
+    .short-play { position: relative; width: 58px; height: 58px; display: grid; place-items: center; border: 1px solid var(--acid); border-radius: 50%; color: var(--acid); font-size: 1.2rem; }
+    .short-status { position: absolute; left: 1rem; right: 1rem; bottom: 1rem; display: flex; justify-content: space-between; color: var(--muted); font-size: .72rem; letter-spacing: .08em; }
+    .short-info { display: flex; justify-content: space-between; gap: 1rem; align-items: end; padding: 1rem .25rem .35rem; }
+    .short-info h3 { margin: 0; font-size: 1rem; }
+    .short-info span { color: var(--muted); font-size: .74rem; }
+
     .workflow { display: grid; grid-template-columns: repeat(5,1fr); margin-top: 2.5rem; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .step { padding: 2rem 1.2rem; border-right: 1px solid var(--line); }
     .step:last-child { border: 0; }
@@ -132,6 +143,7 @@
       .project:nth-child(even) .project-visual { order: 0; }
       .project-visual { min-height: 300px; }
       .workflow { grid-template-columns: 1fr 1fr; }
+      .shorts-grid { grid-template-columns: repeat(2, 1fr); }
       .step { border-bottom: 1px solid var(--line); }
       .tool-grid { grid-template-columns: 1fr 1fr; }
     }
@@ -139,7 +151,7 @@
       .hero, .section { padding-left: 18px; padding-right: 18px; }
       .hero { min-height: auto; }
       h1 { font-size: 3.25rem; }
-      .workflow, .tool-grid { grid-template-columns: 1fr; }
+      .workflow, .tool-grid, .shorts-grid { grid-template-columns: 1fr; }
       .step { border-right: 0; }
       footer { flex-direction: column; gap: .4rem; }
     }
@@ -153,7 +165,7 @@
       <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span><span>[姓名] PORTFOLIO</span></a>
       <button class="menu" aria-expanded="false" aria-controls="nav-links">菜单</button>
       <div class="nav-links" id="nav-links">
-        <a href="#projects">项目</a><a href="#workflow">流程</a><a href="#about">关于</a><a href="#contact">联系</a>
+        <a href="#projects">项目</a><a href="#shorts">短视频</a><a href="#workflow">流程</a><a href="#about">关于</a><a href="#contact">联系</a>
       </div>
     </div>
   </nav>
@@ -163,7 +175,7 @@
       <div>
         <p class="eyebrow">Film Editing · AI Visual Production</p>
         <h1>剪辑<span>重组叙事</span></h1>
-        <p class="hero-copy">天津师范大学戏剧影视文学专业大四学生。具备影视叙事基础与实际后期经验，熟悉AI影视从角色设计、分镜规划、画面生成到剪辑成片的完整流程。</p>
+        <p class="hero-copy">聚焦影视后期与AI视觉制作。以叙事判断组织镜头与节奏，熟悉从角色设计、分镜规划、画面生成到剪辑成片的完整流程。</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#projects">查看项目 <span aria-hidden="true">↘</span></a>
           <a class="btn" href="resume.docx" download>下载简历</a>
@@ -205,6 +217,27 @@
       </div>
     </section>
 
+    <section class="section" id="shorts">
+      <header class="section-head reveal">
+        <div><span class="kicker">Selected Shorts</span><h2>短视频样片</h2></div>
+        <p class="section-intro">用于展示竖屏短视频、短剧切片与AI内容样片。这里预留三个独立播放位置，后续可以按岗位需要持续补充和替换。</p>
+      </header>
+      <div class="shorts-grid reveal">
+        <article class="short-card" data-video-slot="01">
+          <div class="short-frame"><span class="short-play" aria-hidden="true">▶</span><div class="short-status"><span>9:16</span><span>待上传</span></div></div>
+          <div class="short-info"><h3>短视频样片 01</h3><span>[类型 / 职责]</span></div>
+        </article>
+        <article class="short-card" data-video-slot="02">
+          <div class="short-frame"><span class="short-play" aria-hidden="true">▶</span><div class="short-status"><span>9:16</span><span>待上传</span></div></div>
+          <div class="short-info"><h3>短视频样片 02</h3><span>[类型 / 职责]</span></div>
+        </article>
+        <article class="short-card" data-video-slot="03">
+          <div class="short-frame"><span class="short-play" aria-hidden="true">▶</span><div class="short-status"><span>9:16</span><span>待上传</span></div></div>
+          <div class="short-info"><h3>短视频样片 03</h3><span>[类型 / 职责]</span></div>
+        </article>
+      </div>
+    </section>
+
     <section class="section" id="workflow">
       <header class="section-head reveal">
         <div><span class="kicker">Production Workflow</span><h2>AI影视流程</h2></div>
@@ -225,7 +258,7 @@
         <p class="section-intro">专业训练让我能够从人物、情节和叙事逻辑理解素材；后期与AI实践则把这种判断落实到镜头、节奏与具体工作流中。</p>
       </header>
       <div class="about-grid reveal">
-        <p class="about-lead">我希望寻找影视后期、AI视频制作或短视频剪辑方向的实习，在真实项目中继续提升叙事剪辑与AI工作流能力。</p>
+        <p class="about-lead">以叙事理解为基础，把剪辑、声音、画面与AI工具组织成稳定而可迭代的影像工作流。</p>
         <div class="about-side"><strong>内容观察</strong><p>持续关注TikTok及中国大陆短视频平台的热门短剧，从题材、开场钩子、冲突密度和剪辑节奏等维度进行基础分析。</p></div>
       </div>
       <div class="tool-grid reveal">
