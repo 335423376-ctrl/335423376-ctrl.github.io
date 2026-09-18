@@ -90,8 +90,8 @@ window.PORTFOLIO_DATA = {
   ],
 
   contact: {
-    email: "your-email@example.com",
-    emailLabel: "[邮箱地址]",
+    email: "",
+    emailLabel: "",
     wechat: "[微信号]"
   }
 };
