@@ -83,6 +83,7 @@
     .project:nth-child(even) .project-visual { order: 2; }
     .project-visual { min-height: 360px; position: relative; overflow: hidden; background: #0e1214; }
     .project-visual img { width: 100%; height: 100%; object-fit: cover; transition: transform .55s ease, filter .55s ease; }
+    .project-visual video { width: 100%; height: 100%; object-fit: cover; background: #050708; }
     .project:hover .project-visual img { transform: scale(1.025); filter: contrast(1.08); }
     .media-placeholder { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); text-align: center; background: repeating-linear-gradient(135deg,transparent,transparent 15px,rgba(255,255,255,.018) 15px,rgba(255,255,255,.018) 30px); }
     .media-placeholder strong { display: block; color: var(--ink); font-size: 1rem; letter-spacing: .08em; }
@@ -99,6 +100,7 @@
     .short-card:hover { transform: translateY(-5px); border-color: rgba(215,255,79,.55); }
     .short-frame { position: relative; aspect-ratio: 9/16; overflow: hidden; display: grid; place-items: center; background: linear-gradient(155deg,#1a2225,#0a0d0f 65%); border: 1px solid rgba(255,255,255,.09); }
     .short-frame::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 70% 18%,rgba(108,213,209,.13),transparent 34%), repeating-linear-gradient(135deg,transparent,transparent 18px,rgba(255,255,255,.018) 18px,rgba(255,255,255,.018) 36px); }
+    .short-frame video { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; background: #050708; }
     .short-play { position: relative; width: 58px; height: 58px; display: grid; place-items: center; border: 1px solid var(--acid); border-radius: 50%; color: var(--acid); font-size: 1.2rem; }
     .short-status { position: absolute; left: 1rem; right: 1rem; bottom: 1rem; display: flex; justify-content: space-between; color: var(--muted); font-size: .72rem; letter-spacing: .08em; }
     .short-info { display: flex; justify-content: space-between; gap: 1rem; align-items: end; padding: 1rem .25rem .35rem; }
@@ -162,7 +164,7 @@
   <div class="grain" aria-hidden="true"></div>
   <nav class="nav" aria-label="主导航">
     <div class="nav-inner">
-      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span><span>[姓名] PORTFOLIO</span></a>
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span><span id="site-name">[姓名] PORTFOLIO</span></a>
       <button class="menu" aria-expanded="false" aria-controls="nav-links">菜单</button>
       <div class="nav-links" id="nav-links">
         <a href="#projects">项目</a><a href="#shorts">短视频</a><a href="#workflow">流程</a><a href="#about">关于</a><a href="#contact">联系</a>
@@ -173,17 +175,17 @@
   <main id="top">
     <section class="hero">
       <div>
-        <p class="eyebrow">Film Editing · AI Visual Production</p>
-        <h1>剪辑<span>重组叙事</span></h1>
-        <p class="hero-copy">聚焦影视后期与AI视觉制作。以叙事判断组织镜头与节奏，熟悉从角色设计、分镜规划、画面生成到剪辑成片的完整流程。</p>
+        <p class="eyebrow" id="hero-eyebrow"></p>
+        <h1 id="hero-title"></h1>
+        <p class="hero-copy" id="hero-copy"></p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#projects">查看项目 <span aria-hidden="true">↘</span></a>
-          <a class="btn" href="resume.docx" download>下载简历</a>
+          <a class="btn" id="resume-button" href="resume.docx" download>下载简历</a>
         </div>
       </div>
       <div class="hero-art" aria-label="黑白水墨与数字影像融合的原创氛围图">
         <span class="frame-corner tl"></span><span class="frame-corner br"></span>
-        <img src="ink-film-hero.webp" alt="抽象水墨在电影画幅中流动，呈现传统视觉与数字影像融合" />
+        <img id="hero-image" src="ink-film-hero.webp" alt="" />
       </div>
       <span class="scroll-note" aria-hidden="true">SCROLL TO EXPLORE</span>
     </section>
@@ -191,51 +193,17 @@
     <section class="section" id="projects">
       <header class="section-head reveal">
         <div><span class="kicker">Selected Work 01—02</span><h2>核心项目</h2></div>
-        <p class="section-intro">两段经历分别对应长篇幅AI影像的后期组织，以及从创意到成片的AI动画全流程实践。以下内容仅陈述真实参与范围，未使用虚构数据或奖项。</p>
+        <p class="section-intro" id="projects-intro"></p>
       </header>
-      <div class="projects">
-        <article class="project reveal">
-          <div class="project-visual"><div class="media-placeholder"><div><strong>PROJECT STILL / VIDEO</strong>待替换为电视剧样片截图或嵌入视频</div></div></div>
-          <div class="project-copy">
-            <div class="project-meta"><span>学院AI电视剧集项目</span><span>约20分钟</span></div>
-            <h3>AI电视剧集样片</h3>
-            <p>负责剪辑及后期工作。围绕剧本内容完成素材筛选、镜头组织、段落衔接和节奏调整，并处理AI生成素材中的人物动作、镜头连续性与画面稳定性问题。</p>
-            <ul class="tags"><li>素材筛选</li><li>叙事剪辑</li><li>字幕包装</li><li>基础调色</li><li>声音处理</li></ul>
-            <a class="case-link" href="#contact">索取完整样片 →</a>
-          </div>
-        </article>
-        <article class="project reveal">
-          <div class="project-visual"><div class="media-placeholder"><div><strong>INK STYLE SHORT FILM</strong>待替换为黑白国画短片剧照或嵌入视频</div></div></div>
-          <div class="project-copy">
-            <div class="project-meta"><span>学院奖AI相关竞赛参赛项目</span><span>约7分钟</span></div>
-            <h3>黑白国画风AI动画短片</h3>
-            <p>担任导演及项目负责人，带领团队完成创意、人物设计、分镜、AI生成与后期成片。通过多轮素材筛选和剪辑处理人物一致性、动作衔接及画风统一问题。</p>
-            <ul class="tags"><li>导演</li><li>团队统筹</li><li>角色设计</li><li>分镜规划</li><li>AI视频生成</li></ul>
-            <a class="case-link" href="#contact">查看制作过程 →</a>
-          </div>
-        </article>
-      </div>
+      <div class="projects" id="projects-list"></div>
     </section>
 
     <section class="section" id="shorts">
       <header class="section-head reveal">
         <div><span class="kicker">Selected Shorts</span><h2>短视频样片</h2></div>
-        <p class="section-intro">用于展示竖屏短视频、短剧切片与AI内容样片。这里预留三个独立播放位置，后续可以按岗位需要持续补充和替换。</p>
+        <p class="section-intro" id="shorts-intro"></p>
       </header>
-      <div class="shorts-grid reveal">
-        <article class="short-card" data-video-slot="01">
-          <div class="short-frame"><span class="short-play" aria-hidden="true">▶</span><div class="short-status"><span>9:16</span><span>待上传</span></div></div>
-          <div class="short-info"><h3>短视频样片 01</h3><span>[类型 / 职责]</span></div>
-        </article>
-        <article class="short-card" data-video-slot="02">
-          <div class="short-frame"><span class="short-play" aria-hidden="true">▶</span><div class="short-status"><span>9:16</span><span>待上传</span></div></div>
-          <div class="short-info"><h3>短视频样片 02</h3><span>[类型 / 职责]</span></div>
-        </article>
-        <article class="short-card" data-video-slot="03">
-          <div class="short-frame"><span class="short-play" aria-hidden="true">▶</span><div class="short-status"><span>9:16</span><span>待上传</span></div></div>
-          <div class="short-info"><h3>短视频样片 03</h3><span>[类型 / 职责]</span></div>
-        </article>
-      </div>
+      <div class="shorts-grid reveal" id="shorts-list"></div>
     </section>
 
     <section class="section" id="workflow">
@@ -243,13 +211,7 @@
         <div><span class="kicker">Production Workflow</span><h2>AI影视流程</h2></div>
         <p class="section-intro">把AI工具视为制作环节，而不是最终答案。每一步都需要围绕叙事目标进行选择、校正与重新组织。</p>
       </header>
-      <div class="workflow reveal">
-        <div class="step"><span class="step-num">01</span><h3>创意与剧本</h3><p>确定主题、人物关系、情节节点与视觉方向。</p></div>
-        <div class="step"><span class="step-num">02</span><h3>角色与分镜</h3><p>整理角色三视图，以手绘文字分镜明确镜头需求。</p></div>
-        <div class="step"><span class="step-num">03</span><h3>画面生成</h3><p>通过提示词与参考图迭代角色、场景和关键帧。</p></div>
-        <div class="step"><span class="step-num">04</span><h3>动态生成</h3><p>测试不同平台，按镜头目标生成和筛选动态素材。</p></div>
-        <div class="step"><span class="step-num">05</span><h3>剪辑与交付</h3><p>重建节奏和连续性，完成声音、字幕与画面处理。</p></div>
-      </div>
+      <div class="workflow reveal" id="workflow-list"></div>
     </section>
 
     <section class="section" id="about">
@@ -258,47 +220,22 @@
         <p class="section-intro">专业训练让我能够从人物、情节和叙事逻辑理解素材；后期与AI实践则把这种判断落实到镜头、节奏与具体工作流中。</p>
       </header>
       <div class="about-grid reveal">
-        <p class="about-lead">以叙事理解为基础，把剪辑、声音、画面与AI工具组织成稳定而可迭代的影像工作流。</p>
-        <div class="about-side"><strong>内容观察</strong><p>持续关注TikTok及中国大陆短视频平台的热门短剧，从题材、开场钩子、冲突密度和剪辑节奏等维度进行基础分析。</p></div>
+        <p class="about-lead" id="about-lead"></p>
+        <div class="about-side"><strong id="about-side-title"></strong><p id="about-side-copy"></p></div>
       </div>
-      <div class="tool-grid reveal">
-        <div class="tool"><strong>DaVinci Resolve</strong><span>剪辑 · 基础调色 · 声音</span></div>
-        <div class="tool"><strong>剪映</strong><span>短视频剪辑 · 字幕包装</span></div>
-        <div class="tool"><strong>ChatGPT / Gemini</strong><span>创意辅助 · 角色方案</span></div>
-        <div class="tool"><strong>即梦 Seedance 2.0</strong><span>AI动态画面生成</span></div>
-        <div class="tool"><strong>TapNow / Seko</strong><span>流程测试 · 效果比较</span></div>
-        <div class="tool"><strong>Cnimea Studio</strong><span>AI影视制作实验</span></div>
-      </div>
+      <div class="tool-grid reveal" id="tools-list"></div>
     </section>
 
     <section class="section contact" id="contact">
       <div class="contact-panel reveal">
         <div><span class="kicker">Available for Internship</span><h2>期待参与<br />下一段影像</h2></div>
-        <div class="contact-links">
-          <a href="mailto:your-email@example.com"><span>邮箱</span><span>[邮箱地址] ↗</span></a>
-          <a href="#"><span>微信</span><span>[微信号] ↗</span></a>
-          <a href="resume.docx" download><span>简历</span><span>下载 Word ↘</span></a>
-        </div>
+        <div class="contact-links" id="contact-links"></div>
       </div>
     </section>
   </main>
-  <footer><span>© 2026 [姓名]</span><span>Film Editing · AI Visual Production</span></footer>
+  <footer><span id="footer-name"></span><span id="footer-role"></span></footer>
 
-  <script>
-    const menu = document.querySelector('.menu');
-    const nav = document.querySelector('.nav-links');
-    menu.addEventListener('click', () => {
-      const open = menu.getAttribute('aria-expanded') === 'true';
-      menu.setAttribute('aria-expanded', String(!open));
-      nav.classList.toggle('open', !open);
-    });
-    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      nav.classList.remove('open'); menu.setAttribute('aria-expanded', 'false');
-    }));
-    const observer = new IntersectionObserver(entries => entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
-    }), { threshold: .12 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  </script>
+  <script src="content.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
