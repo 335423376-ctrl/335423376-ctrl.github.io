@@ -84,10 +84,15 @@
   $("#tools-list").innerHTML = data.tools.map((tool) => `<div class="tool"><strong>${escapeHTML(tool.name)}</strong><span>${escapeHTML(tool.detail)}</span></div>`).join("");
 
   const email = data.contact.email || "";
-  $("#contact-links").innerHTML = `
-    <a href="mailto:${safeUrl(email)}"><span>邮箱</span><span>${escapeHTML(data.contact.emailLabel || email)} ↗</span></a>
-    <a href="#contact"><span>微信</span><span>${escapeHTML(data.contact.wechat)} ↗</span></a>
-    <a href="${safeUrl(data.site.resumeFile)}" download><span>简历</span><span>下载 Word ↘</span></a>`;
+  const contactLinks = [];
+  if (email) {
+    contactLinks.push(`<a href="mailto:${safeUrl(email)}"><span>邮箱</span><span>${escapeHTML(data.contact.emailLabel || email)} ↗</span></a>`);
+  }
+  if (data.contact.wechat) {
+    contactLinks.push(`<a href="#contact"><span>微信</span><span>${escapeHTML(data.contact.wechat)} ↗</span></a>`);
+  }
+  contactLinks.push(`<a href="${safeUrl(data.site.resumeFile)}" download><span>简历</span><span>下载 Word ↘</span></a>`);
+  $("#contact-links").innerHTML = contactLinks.join("");
   setText("#footer-name", data.site.footerName);
   setText("#footer-role", data.site.footerRole);
 
