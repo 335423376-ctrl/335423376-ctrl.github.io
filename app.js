@@ -31,7 +31,7 @@
     }
     if (type === "video" && file) {
       const poster = safeUrl(media.poster);
-      return `<video controls preload="metadata"${poster ? ` poster="${poster}"` : ""}><source src="${file}" type="video/mp4">浏览器不支持视频播放。</video>`;
+      return `<video controls preload="metadata" playsinline${poster ? ` poster="${poster}"` : ""}><source src="${file}" type="video/mp4">浏览器不支持视频播放。</video>`;
     }
     return `<div class="media-placeholder"><div><strong>${escapeHTML(media.label || "PROJECT MEDIA")}</strong>${escapeHTML(media.note || "待上传")}</div></div>`;
   };

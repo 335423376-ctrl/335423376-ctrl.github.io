@@ -5,8 +5,8 @@
 */
 window.PORTFOLIO_DATA = {
   site: {
-    name: "[姓名] PORTFOLIO",
-    footerName: "© 2026 [姓名]",
+    name: "HJZ PORTFOLIO",
+    footerName: "© HJZ",
     footerRole: "Film Editing · AI Visual Production",
     resumeFile: "resume.docx"
   },
@@ -21,7 +21,7 @@ window.PORTFOLIO_DATA = {
   },
 
   sectionText: {
-    projects: "两段经历分别对应长篇幅AI影像的后期组织，以及从创意到成片的AI动画全流程实践。以下内容仅陈述真实参与范围，未使用虚构数据或奖项。",
+    projects: "两段经历分别对应长篇幅AI影像的后期组织，以及从创意到成片的AI动画全流程实践。",
     shorts: "用于展示竖屏短视频、短剧切片与AI内容样片。后续可以按岗位需要持续补充和替换。"
   },
 
@@ -35,11 +35,11 @@ window.PORTFOLIO_DATA = {
       linkText: "索取完整样片 →",
       link: "#contact",
       media: {
-        type: "placeholder",
-        file: "",
+        type: "image",
+        file: "gandayying-feature-cover.webp",
         poster: "",
-        label: "PROJECT STILL / VIDEO",
-        note: "待替换为电视剧样片截图或视频"
+        label: "SELECTED EDIT / TEST COVER",
+        note: "大陆访问测试版暂时只加载封面"
       }
     },
     {
