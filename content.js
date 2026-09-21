@@ -35,11 +35,11 @@ window.PORTFOLIO_DATA = {
       linkText: "索取完整样片 →",
       link: "#contact",
       media: {
-        type: "image",
-        file: "gandayying-feature-cover.webp",
-        poster: "",
-        label: "SELECTED EDIT / TEST COVER",
-        note: "大陆访问测试版暂时只加载封面"
+        type: "video",
+        file: "https://1491699321.vod-qcloud.com/a20c852fvodcq1491699321/146b21da5001834821409380391/c2aEtc8ztIoA.mp4",
+        poster: "gandayying-feature-cover.webp",
+        label: "SELECTED EDIT / VIDEO",
+        note: "片头与两段精选剪辑 · 02:50"
       }
     },
     {
