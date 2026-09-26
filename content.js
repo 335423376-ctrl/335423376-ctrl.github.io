@@ -77,10 +77,10 @@ window.PORTFOLIO_DATA = {
     title: "《问心——万有引力》制作过程",
     intro: "节选展示角色设计、分镜规划、画面生成与动态测试等工作流记录。",
     items: [
-      { title: "角色设计与三视图", image: "", alt: "角色设计与三视图工作记录", note: "待上传工作流截图" },
-      { title: "手绘文字分镜", image: "", alt: "手绘文字分镜工作记录", note: "待上传工作流截图" },
-      { title: "画面生成与风格测试", image: "", alt: "画面生成与风格测试工作记录", note: "待上传工作流截图" },
-      { title: "动态素材与后期整理", image: "", alt: "动态素材筛选与后期整理工作记录", note: "待上传工作流截图" }
+      { title: "角色设计与三视图", images: ["wenxin-character-boy.webp", "wenxin-character-antagonist.webp"], alt: "《问心——万有引力》角色设计与三视图" },
+      { title: "手绘文字分镜", images: ["wenxin-storyboard.webp"], alt: "《问心——万有引力》分镜工作记录" },
+      { title: "画面生成与风格测试", images: ["wenxin-style-test.webp"], alt: "《问心——万有引力》画面风格测试" },
+      { title: "资产整合后期工作流", images: ["wenxin-workflow.webp"], alt: "《问心——万有引力》资产整合后期工作流" }
     ]
   },
 
