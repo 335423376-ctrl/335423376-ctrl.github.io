@@ -43,19 +43,19 @@ window.PORTFOLIO_DATA = {
       }
     },
     {
-      title: "黑白国画风AI动画短片",
+      title: "《问心——万有引力》",
       category: "学院奖AI相关竞赛参赛项目",
-      duration: "约7分钟",
+      duration: "完整片 06:14",
       description: "担任导演及项目负责人，带领团队完成创意、人物设计、分镜、AI生成与后期成片。通过多轮素材筛选和剪辑处理人物一致性、动作衔接及画风统一问题。",
       tags: ["导演", "团队统筹", "角色设计", "分镜规划", "AI视频生成"],
       linkText: "查看制作过程 →",
-      link: "#contact",
+      link: "#workflow",
       media: {
-        type: "placeholder",
-        file: "",
-        poster: "",
-        label: "INK STYLE SHORT FILM",
-        note: "待替换为黑白国画短片剧照或视频"
+        type: "video",
+        file: "https://1491699321.vod-qcloud.com/a20c852fvodcq1491699321/93ebfc5c5001834821903675054/taC9Yq41AcsA.mp4",
+        poster: "https://1491699321.vod-qcloud.com/a20c852fvodcq1491699321/93ebfc5c5001834821903675054/ORBqur.jpeg",
+        label: "AI INK SHORT FILM / VIDEO",
+        note: "精选片段 · 01:18"
       }
     }
   ],
