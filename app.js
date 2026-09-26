@@ -97,9 +97,10 @@
     setText("#process-showcase-title", showcase.title);
     setText("#process-showcase-intro", showcase.intro);
     grid.innerHTML = (showcase.items || []).map((item) => {
-      const image = safeUrl(item.image);
-      const media = image
-        ? `<img src="${image}" alt="${escapeHTML(item.alt || item.title || "工作流截图")}" loading="lazy">`
+      const sourceImages = Array.isArray(item.images) ? item.images : [item.image];
+      const images = sourceImages.map((source) => safeUrl(source)).filter(Boolean);
+      const media = images.length
+        ? `<div class="workflow-shot-images${images.length > 1 ? " is-pair" : ""}">${images.map((image, imageIndex) => `<button class="workflow-shot-open" type="button" data-image-src="${image}" data-image-caption="${escapeHTML(item.title)}" aria-label="放大查看${escapeHTML(item.title)}${images.length > 1 ? ` ${imageIndex + 1}` : ""}"><img src="${image}" alt="${escapeHTML(item.alt || item.title || "工作流截图")}" loading="lazy"></button>`).join("")}</div>`
         : `<div class="workflow-shot-placeholder"><span>WORKFLOW ARCHIVE</span><strong>${escapeHTML(item.note || "待上传工作流截图")}</strong></div>`;
       return `<figure class="workflow-shot">
         <div class="workflow-shot-media">${media}</div>
@@ -162,7 +163,10 @@
   });
   if (shortClose) shortClose.addEventListener("click", closeShortViewer);
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeShortViewer();
+    if (event.key === "Escape") {
+      closeShortViewer();
+      closeWorkflowViewer();
+    }
   });
 
   if (shortFeed && "IntersectionObserver" in window) {
@@ -187,6 +191,38 @@
   setText("#about-side-title", data.about.sideTitle);
   setText("#about-side-copy", data.about.sideCopy);
   $("#tools-list").innerHTML = data.tools.map((tool) => `<div class="tool"><strong>${escapeHTML(tool.name)}</strong><span>${escapeHTML(tool.detail)}</span></div>`).join("");
+
+  const workflowViewer = $("#workflow-viewer");
+  const workflowViewerImage = $("#workflow-viewer-image");
+  const workflowViewerCaption = $("#workflow-viewer-caption");
+  const workflowViewerClose = $("#workflow-viewer-close");
+  let workflowViewerTrigger = null;
+
+  const closeWorkflowViewer = () => {
+    if (!workflowViewer || workflowViewer.hidden) return;
+    workflowViewer.hidden = true;
+    workflowViewer.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("viewer-open");
+    if (workflowViewerImage) workflowViewerImage.removeAttribute("src");
+    if (workflowViewerTrigger) workflowViewerTrigger.focus();
+  };
+
+  $("#process-showcase-grid").addEventListener("click", (event) => {
+    const button = event.target.closest(".workflow-shot-open");
+    if (!button || !workflowViewer || !workflowViewerImage) return;
+    workflowViewerTrigger = button;
+    workflowViewerImage.src = button.dataset.imageSrc || "";
+    workflowViewerImage.alt = button.dataset.imageCaption || "工作流截图";
+    if (workflowViewerCaption) workflowViewerCaption.textContent = button.dataset.imageCaption || "";
+    workflowViewer.hidden = false;
+    workflowViewer.setAttribute("aria-hidden", "false");
+    document.body.classList.add("viewer-open");
+    if (workflowViewerClose) workflowViewerClose.focus();
+  });
+  if (workflowViewerClose) workflowViewerClose.addEventListener("click", closeWorkflowViewer);
+  if (workflowViewer) workflowViewer.addEventListener("click", (event) => {
+    if (event.target === workflowViewer) closeWorkflowViewer();
+  });
 
   const email = data.contact.email || "";
   const contactLinks = [];
