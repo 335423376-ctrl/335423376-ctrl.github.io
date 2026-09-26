@@ -54,13 +54,34 @@
     $("#shorts-list").innerHTML = data.shorts.map((item, index) => {
       const video = safeUrl(item.video);
       const poster = safeUrl(item.poster);
+      const preview = poster
+        ? `<img src="${poster}" alt="${escapeHTML(item.title || "短视频封面")}" loading="lazy">`
+        : "";
       const media = video
-        ? `<video controls preload="metadata" playsinline${poster ? ` poster="${poster}"` : ""}><source src="${video}" type="video/mp4">浏览器不支持视频播放。</video>`
+        ? `<button class="short-open" type="button" data-short-index="${index}" aria-label="播放${escapeHTML(item.title || "短视频")}">${preview}<span class="short-play" aria-hidden="true">▶</span><div class="short-status"><span>${escapeHTML(item.ratio || "9:16")}</span><span>${escapeHTML(item.status || "点击播放")}</span></div></button>`
         : `<span class="short-play" aria-hidden="true">▶</span><div class="short-status"><span>${escapeHTML(item.ratio || "9:16")}</span><span>${escapeHTML(item.status || "待上传")}</span></div>`;
-      return `<article class="short-card" data-video-slot="${String(index + 1).padStart(2, "0")}">
+      return `<article class="short-card${video ? " has-video" : ""}" data-video-slot="${String(index + 1).padStart(2, "0")}">
         <div class="short-frame">${media}</div>
         <div class="short-info"><h3>${escapeHTML(item.title)}</h3><span>${escapeHTML(item.role)}</span></div>
       </article>`;
+    }).join("");
+  };
+
+  const renderShortFeed = () => {
+    const feed = $("#short-feed");
+    if (!feed) return;
+    feed.innerHTML = data.shorts.map((item, index) => {
+      const video = safeUrl(item.video);
+      if (!video) return "";
+      const poster = safeUrl(item.poster);
+      return `<section class="short-slide" data-short-index="${index}">
+        <div class="short-player-shell">
+          <video controls playsinline preload="metadata"${poster ? ` poster="${poster}"` : ""}>
+            <source src="${video}" type="video/mp4">浏览器不支持视频播放。
+          </video>
+          <div class="short-caption"><strong>${escapeHTML(item.title)}</strong><span>${escapeHTML(item.role)}</span></div>
+        </div>
+      </section>`;
     }).join("");
   };
 
@@ -75,6 +96,66 @@
   setText("#shorts-intro", data.sectionText.shorts);
   renderProjects();
   renderShorts();
+  renderShortFeed();
+
+  const shortViewer = $("#short-viewer");
+  const shortFeed = $("#short-feed");
+  const shortClose = $("#short-viewer-close");
+  let shortTrigger = null;
+
+  const stopShortVideos = () => {
+    if (!shortFeed) return;
+    shortFeed.querySelectorAll("video").forEach((video) => video.pause());
+  };
+
+  const closeShortViewer = () => {
+    if (!shortViewer || shortViewer.hidden) return;
+    stopShortVideos();
+    shortViewer.hidden = true;
+    shortViewer.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("viewer-open");
+    if (shortTrigger) shortTrigger.focus();
+  };
+
+  const openShortViewer = (index, trigger) => {
+    if (!shortViewer || !shortFeed) return;
+    const slide = shortFeed.querySelector(`[data-short-index="${index}"]`);
+    if (!slide) return;
+    shortTrigger = trigger || null;
+    shortViewer.hidden = false;
+    shortViewer.setAttribute("aria-hidden", "false");
+    document.body.classList.add("viewer-open");
+    shortFeed.scrollTop = slide.offsetTop;
+    stopShortVideos();
+    const video = slide.querySelector("video");
+    if (video) video.play().catch(() => {});
+    if (shortClose) shortClose.focus();
+  };
+
+  $("#shorts-list").addEventListener("click", (event) => {
+    const button = event.target.closest(".short-open");
+    if (button) openShortViewer(Number(button.dataset.shortIndex), button);
+  });
+  if (shortClose) shortClose.addEventListener("click", closeShortViewer);
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeShortViewer();
+  });
+
+  if (shortFeed && "IntersectionObserver" in window) {
+    const feedObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const video = entry.target.querySelector("video");
+        if (!video) return;
+        if (entry.isIntersecting) {
+          stopShortVideos();
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+    }, { root: shortFeed, threshold: 0.72 });
+    shortFeed.querySelectorAll(".short-slide").forEach((slide) => feedObserver.observe(slide));
+  }
 
   $("#workflow-list").innerHTML = data.workflow.map((step, index) => `
     <div class="step"><span class="step-num">${String(index + 1).padStart(2, "0")}</span><h3>${escapeHTML(step.title)}</h3><p>${escapeHTML(step.copy)}</p></div>`).join("");
