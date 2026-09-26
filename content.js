@@ -22,7 +22,7 @@ window.PORTFOLIO_DATA = {
 
   sectionText: {
     projects: "两段经历分别对应长篇幅AI影像的后期组织，以及从创意到成片的AI动画全流程实践。",
-    shorts: "用于展示竖屏短视频、短剧切片与AI内容样片。后续可以按岗位需要持续补充和替换。"
+    shorts: ""
   },
 
   projects: [
@@ -84,9 +84,8 @@ window.PORTFOLIO_DATA = {
     { name: "DaVinci Resolve", detail: "剪辑 · 基础调色 · 声音" },
     { name: "剪映", detail: "短视频剪辑 · 字幕包装" },
     { name: "ChatGPT / Gemini", detail: "创意辅助 · 角色方案" },
-    { name: "即梦 Seedance 2.0", detail: "AI动态画面生成" },
-    { name: "TapNow / Seko", detail: "流程测试 · 效果比较" },
-    { name: "Cnimea Studio", detail: "AI影视制作实验" }
+    { name: "即梦 Seedance", detail: "AI动态画面生成" },
+    { name: "TapNow / Seko / Cinema Studio", detail: "AI影视制作实验" }
   ],
 
   contact: {
