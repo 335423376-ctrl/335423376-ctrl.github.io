@@ -49,7 +49,7 @@ window.PORTFOLIO_DATA = {
       description: "担任导演及项目负责人，带领团队完成创意、人物设计、分镜、AI生成与后期成片。通过多轮素材筛选和剪辑处理人物一致性、动作衔接及画风统一问题。",
       tags: ["导演", "团队统筹", "角色设计", "分镜规划", "AI视频生成"],
       linkText: "查看制作过程 →",
-      link: "#workflow",
+      link: "#process-showcase",
       media: {
         type: "video",
         file: "https://1491699321.vod-qcloud.com/a20c852fvodcq1491699321/93ebfc5c5001834821903675054/taC9Yq41AcsA.mp4",
@@ -61,9 +61,7 @@ window.PORTFOLIO_DATA = {
   ],
 
   shorts: [
-    { title: "哈利·波特系列混剪", role: "个人剪辑练习 · 00:40", ratio: "9:16", status: "点击播放", video: "https://1491699321.vod-qcloud.com/a20c852fvodcq1491699321/21c804555001834821905111780/htEDmbQayWkA.mp4", poster: "https://1491699321.vod-qcloud.com/a20c852fvodcq1491699321/21c804555001834821905111780/31oTgu.jpeg" },
-    { title: "短视频样片 02", role: "[类型 / 职责]", ratio: "9:16", status: "待上传", video: "", poster: "" },
-    { title: "短视频样片 03", role: "[类型 / 职责]", ratio: "9:16", status: "待上传", video: "", poster: "" }
+    { title: "哈利·波特系列混剪", role: "个人剪辑练习 · 00:40", ratio: "9:16", status: "点击播放", video: "https://1491699321.vod-qcloud.com/a20c852fvodcq1491699321/21c804555001834821905111780/htEDmbQayWkA.mp4", poster: "https://1491699321.vod-qcloud.com/a20c852fvodcq1491699321/21c804555001834821905111780/31oTgu.jpeg" }
   ],
 
   workflow: [
@@ -73,6 +71,18 @@ window.PORTFOLIO_DATA = {
     { title: "动态生成", copy: "测试不同平台，按镜头目标生成和筛选动态素材。" },
     { title: "剪辑与交付", copy: "重建节奏和连续性，完成声音、字幕与画面处理。" }
   ],
+
+  processShowcase: {
+    eyebrow: "Project Workflow",
+    title: "《问心——万有引力》制作过程",
+    intro: "节选展示角色设计、分镜规划、画面生成与动态测试等工作流记录。",
+    items: [
+      { title: "角色设计与三视图", image: "", alt: "角色设计与三视图工作记录", note: "待上传工作流截图" },
+      { title: "手绘文字分镜", image: "", alt: "手绘文字分镜工作记录", note: "待上传工作流截图" },
+      { title: "画面生成与风格测试", image: "", alt: "画面生成与风格测试工作记录", note: "待上传工作流截图" },
+      { title: "动态素材与后期整理", image: "", alt: "动态素材筛选与后期整理工作记录", note: "待上传工作流截图" }
+    ]
+  },
 
   about: {
     lead: "以叙事理解为基础，把剪辑、声音、画面与AI工具组织成稳定而可迭代的影像工作流。",
