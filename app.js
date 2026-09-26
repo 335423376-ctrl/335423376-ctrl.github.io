@@ -85,6 +85,29 @@
     }).join("");
   };
 
+  const renderProcessShowcase = () => {
+    const showcase = data.processShowcase;
+    const section = $("#process-showcase");
+    const grid = $("#process-showcase-grid");
+    if (!showcase || !section || !grid) {
+      if (section) section.hidden = true;
+      return;
+    }
+    setText("#process-showcase-eyebrow", showcase.eyebrow);
+    setText("#process-showcase-title", showcase.title);
+    setText("#process-showcase-intro", showcase.intro);
+    grid.innerHTML = (showcase.items || []).map((item) => {
+      const image = safeUrl(item.image);
+      const media = image
+        ? `<img src="${image}" alt="${escapeHTML(item.alt || item.title || "工作流截图")}" loading="lazy">`
+        : `<div class="workflow-shot-placeholder"><span>WORKFLOW ARCHIVE</span><strong>${escapeHTML(item.note || "待上传工作流截图")}</strong></div>`;
+      return `<figure class="workflow-shot">
+        <div class="workflow-shot-media">${media}</div>
+        <figcaption>${escapeHTML(item.title)}</figcaption>
+      </figure>`;
+    }).join("");
+  };
+
   setText("#site-name", data.site.name);
   setText("#hero-eyebrow", data.hero.eyebrow);
   $("#hero-title").innerHTML = `${escapeHTML(data.hero.title)}<span>${escapeHTML(data.hero.outlinedTitle)}</span>`;
@@ -97,6 +120,7 @@
   renderProjects();
   renderShorts();
   renderShortFeed();
+  renderProcessShowcase();
 
   const shortViewer = $("#short-viewer");
   const shortFeed = $("#short-feed");
