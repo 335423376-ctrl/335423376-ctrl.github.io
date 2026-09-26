@@ -95,7 +95,7 @@
     .tags li { border: 1px solid var(--line); padding: .25rem .6rem; font-size: .76rem; color: #cbd1d1; }
     .case-link { width: fit-content; margin-top: 1.5rem; color: var(--acid); text-decoration: none; border-bottom: 1px solid currentColor; }
 
-    .shorts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 2.5rem; }
+    .shorts-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,340px)); gap: 1.4rem; margin-top: 2.5rem; }
     .short-card { position: relative; background: var(--panel); border: 1px solid var(--line); padding: .8rem; transition: transform .25s ease, border-color .25s ease; }
     .short-card:hover { transform: translateY(-5px); border-color: rgba(215,255,79,.55); }
     .short-frame { position: relative; aspect-ratio: 9/16; overflow: hidden; display: grid; place-items: center; background: linear-gradient(155deg,#1a2225,#0a0d0f 65%); border: 1px solid rgba(255,255,255,.09); }
@@ -127,6 +127,17 @@
     .short-caption span { color: rgba(255,255,255,.72); font-size: .78rem; }
     .viewer-close { position: fixed; z-index: 102; top: max(1rem,env(safe-area-inset-top)); right: max(1rem,env(safe-area-inset-right)); width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.28); border-radius: 50%; background: rgba(0,0,0,.56); color: #fff; font-size: 1.7rem; line-height: 1; cursor: pointer; backdrop-filter: blur(10px); }
     .viewer-hint { position: fixed; z-index: 101; top: 50%; right: max(.55rem,env(safe-area-inset-right)); transform: translateY(-50%); writing-mode: vertical-rl; color: rgba(255,255,255,.48); font-size: .68rem; letter-spacing: .14em; pointer-events: none; }
+
+    #process-showcase { scroll-margin-top: 88px; }
+    .workflow-gallery { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1px; margin-top: 2.5rem; background: var(--line); border: 1px solid var(--line); }
+    .workflow-shot { margin: 0; background: var(--panel); }
+    .workflow-shot-media { aspect-ratio: 16/10; overflow: hidden; background: #0e1214; }
+    .workflow-shot-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
+    .workflow-shot:hover .workflow-shot-media img { transform: scale(1.02); }
+    .workflow-shot-placeholder { width: 100%; height: 100%; min-height: 240px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .45rem; text-align: center; color: var(--muted); background: repeating-linear-gradient(135deg,transparent,transparent 18px,rgba(255,255,255,.018) 18px,rgba(255,255,255,.018) 36px); }
+    .workflow-shot-placeholder span { color: var(--acid); font-size: .68rem; letter-spacing: .18em; }
+    .workflow-shot-placeholder strong { color: var(--ink); font-size: .9rem; font-weight: 500; }
+    .workflow-shot figcaption { padding: 1rem 1.15rem; color: #cbd1d1; font-size: .88rem; border-top: 1px solid var(--line); }
 
     .workflow { display: grid; grid-template-columns: repeat(5,1fr); margin-top: 2.5rem; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .step { padding: 2rem 1.2rem; border-right: 1px solid var(--line); }
@@ -174,7 +185,7 @@
       .hero, .section { padding-left: 18px; padding-right: 18px; }
       .hero { min-height: auto; }
       h1 { font-size: 3.25rem; }
-      .workflow, .tool-grid, .shorts-grid { grid-template-columns: 1fr; }
+      .workflow, .workflow-gallery, .tool-grid, .shorts-grid { grid-template-columns: 1fr; }
       .step { border-right: 0; }
       footer { flex-direction: column; gap: .4rem; }
     }
@@ -217,6 +228,14 @@
         <p class="section-intro" id="projects-intro"></p>
       </header>
       <div class="projects" id="projects-list"></div>
+    </section>
+
+    <section class="section" id="process-showcase">
+      <header class="section-head reveal">
+        <div><span class="kicker" id="process-showcase-eyebrow"></span><h2 id="process-showcase-title"></h2></div>
+        <p class="section-intro" id="process-showcase-intro"></p>
+      </header>
+      <div class="workflow-gallery reveal" id="process-showcase-grid"></div>
     </section>
 
     <section class="section" id="shorts">
