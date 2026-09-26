@@ -61,7 +61,7 @@ window.PORTFOLIO_DATA = {
   ],
 
   shorts: [
-    { title: "短视频样片 01", role: "[类型 / 职责]", ratio: "9:16", status: "待上传", video: "", poster: "" },
+    { title: "哈利·波特系列混剪", role: "个人剪辑练习 · 00:40", ratio: "9:16", status: "点击播放", video: "https://1491699321.vod-qcloud.com/a20c852fvodcq1491699321/21c804555001834821905111780/htEDmbQayWkA.mp4", poster: "https://1491699321.vod-qcloud.com/a20c852fvodcq1491699321/21c804555001834821905111780/31oTgu.jpeg" },
     { title: "短视频样片 02", role: "[类型 / 职责]", ratio: "9:16", status: "待上传", video: "", poster: "" },
     { title: "短视频样片 03", role: "[类型 / 职责]", ratio: "9:16", status: "待上传", video: "", poster: "" }
   ],
