@@ -230,7 +230,7 @@
     contactLinks.push(`<a href="mailto:${safeUrl(email)}"><span>邮箱</span><span>${escapeHTML(data.contact.emailLabel || email)} ↗</span></a>`);
   }
   if (data.contact.wechat) {
-    contactLinks.push(`<div class="contact-row"><span>工作微信</span><span>${escapeHTML(data.contact.wechat)}</span></div>`);
+    contactLinks.push(`<div class="contact-row"><span>微信</span><span>${escapeHTML(data.contact.wechat)}</span></div>`);
   }
   contactLinks.push(`<a href="${safeUrl(data.site.resumeFile)}" download><span>简历</span><span>下载 PDF ↘</span></a>`);
   $("#contact-links").innerHTML = contactLinks.join("");
