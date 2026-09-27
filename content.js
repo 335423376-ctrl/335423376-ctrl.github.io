@@ -8,7 +8,7 @@ window.PORTFOLIO_DATA = {
     name: "HJZ PORTFOLIO",
     footerName: "© HJZ",
     footerRole: "Film Editing · AI Visual Production",
-    resumeFile: "resume.docx"
+    resumeFile: "HJZ-resume.pdf"
   },
 
   hero: {
@@ -101,6 +101,6 @@ window.PORTFOLIO_DATA = {
   contact: {
     email: "",
     emailLabel: "",
-    wechat: "[微信号]"
+    wechat: "yo_3yu"
   }
 };
